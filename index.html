@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shujaa Self Help Group</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-DyZ88mC6Up2uqS7SYWtlUKHd0+E/gZb45qylQFTjbXhfhAjd2ft3d9G9GXl3u40z" crossorigin="anonymous">
   <style>
     /* Basic Reset */
     * {
@@ -161,6 +162,26 @@
       margin-bottom: 1rem;
     }
 
+    /* Contact Icons */
+    .contact-icons p {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      color: #2c3e50;
+    }
+
+    .icon {
+      font-size: 1.5rem;
+      color: #2980b9;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .icon:hover {
+      transform: scale(1.1);
+      color: #f39c12;
+    }
+
     .button {
       background-color: #2980b9;
       color: white;
@@ -236,13 +257,16 @@
   <section id="contact">
     <h2>Get in Touch</h2>
     <p>We'd love to hear from you! Feel free to reach out through the following contacts:</p>
-    <p>Phone: <a href="tel:+254746964803">0746964803</a> | <a href="tel:+254769835261">0769835261</a></p>
-    <p>Email: <a href="mailto:shujaaselfhelpg11@gmail.com">shujaaselfhelpg11@gmail.com</a></p>
+    <div class="contact-icons">
+      <p><i class="fas fa-phone-alt icon"></i> Phone: <a href="tel:+254746964803">0746964803</a> | <a href="tel:+254769835261">0769835261</a></p>
+      <p><i class="fas fa-envelope icon"></i> Email: <a href="mailto:shujaaselfhelpg11@gmail.com">shujaaselfhelpg11@gmail.com</a></p>
+      <p><i class="fab fa-whatsapp icon"></i> WhatsApp: <a href="https://wa.me/254740920815" target="_blank">+254 740 920 815</a></p>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2024 Shujaa Self Help Group. All rights reserved.</p>
+    <p>&copy; 2024 Shujaa Self Help Group. All Rights Reserved.</p>
   </footer>
 </body>
 </html>
