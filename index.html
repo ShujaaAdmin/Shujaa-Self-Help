@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shujaa Self Help Group</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      color: #333;
+      background-color: #f8f9fa;
+      line-height: 1.6;
+    }
+
+    /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #333;
+      color: #fff;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #ffeb3b;
+      transform: translateY(-2px);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      color: #333;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      list-style: none;
+      padding: 0;
+      z-index: 1;
+    }
+
+    .dropdown-content li a {
+      color: #333;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      display: block;
+      font-size: 14px;
+    }
+
+    .dropdown-content li a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-image: url('images/01.jpg'); /* Replace with your background image */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+      font-size: 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero .button {
+      background-color: #ffeb3b;
+      color: #333;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+
+    .hero .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* About Section */
+    #about {
+      padding: 3rem 2rem;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 2rem auto;
+      max-width: 900px;
+    }
+
+    #about h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .about-content img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-content p {
+      font-size: 1rem;
+      max-width: 500px;
+      text-align: left;
+      transition: transform 0.3s;
+    }
+
+    .about-content p:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Contact Section */
+    #contact {
+      padding: 3rem 2rem;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 2rem auto;
+      max-width: 900px;
+    }
+
+    #contact h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    #contact p {
+      margin-bottom: 1rem;
+    }
+
+    .button {
+      background-color: #4a90e2;
+      color: white;
+      padding: 0.6rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .about-content {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo">Shujaa Self Help Group</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero" id="home">
+    <h1>Welcome to Shujaa Self Help Group</h1>
+    <p>Your community partner for empowerment and support!</p>
+  </div>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="about-content">
+      <img src="images/02.jpg" alt="Shujaa Self Help Group">
+      <p>Welcome to the official page of Shujaa Self Help Group! 🌟 We are a community-driven organization dedicated to empowering individuals and families across the country through collective action and financial support. At Shujaa, we believe in the power of unity and collaboration to effect positive change. Our mission is to uplift our members by providing a favorable savings home, a better place to borrow at friendly interest rates, and opportunities through connection with our members. Join us on our journey as we work together to build a stronger, more resilient community where we believe in creating opportunities for ourselves. Follow our page for updates on our initiatives, events, and ways you can get involved. Together, we can make a difference!</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <p>We'd love to hear from you! Feel free to reach out through the following contacts:</p>
+    <p>Phone: <a href="tel:+254746964803">0746964803</a> | <a href="tel:+254769835261">0769835261</a></p>
+    <p>Email: <a href="mailto:shujaaselfhelpg11@gmail.com">shujaaselfhelpg11@gmail.com</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Shujaa Self Help Group. All rights reserved.</p>
+  </footer>
+</body>
+</html>
