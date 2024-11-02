@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shujaa Self Help Group </title>
+  <title>Shujaa Self Help Group</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     /* Basic Reset */
     * {
@@ -24,20 +25,18 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
+      padding: 0.5rem 1.5rem;
       background-color: #2980b9;
       color: #fff;
-      font-size: 16px;
+      font-size: 14px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
-    .logo {
-      font-weight: bold;
-      font-size: 1.5rem;
-      text-transform: uppercase;
+    .logo img {
+      width: 100px;
     }
 
     .nav-links {
@@ -50,11 +49,32 @@
       text-decoration: none;
       color: #fff;
       transition: color 0.3s, transform 0.3s;
+      display: flex;
+      align-items: center;
     }
 
     .nav-links li a:hover {
       color: #f39c12;
       transform: translateY(-2px);
+    }
+
+    .nav-links li a i {
+      margin-right: 5px;
+    }
+
+    /* Hamburger Icon */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .bar {
+      height: 3px;
+      width: 25px;
+      background-color: white;
+      margin: 3px 0;
+      transition: 0.4s;
     }
 
     /* Hero Section */
@@ -66,19 +86,11 @@
       text-align: center;
       padding: 4rem 2rem;
       font-size: 1.2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
+    .hero h1 {
+      font-size: 2rem;
     }
 
     .hero .button {
@@ -96,8 +108,8 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
-    /* About Section */
-    #about {
+    /* Section Styling */
+    section {
       padding: 3rem 2rem;
       text-align: center;
       background-color: #fff;
@@ -105,76 +117,18 @@
       border-radius: 10px;
       margin: 2rem auto;
       max-width: 900px;
+      scroll-margin-top: 200px; /* Adjust this value according to your nav height */
     }
 
-    #about h2 {
+    h2 {
       font-size: 2rem;
-      margin-bottom: 1rem;
       color: #2980b9;
     }
 
-    .about-content {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .about-content img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .about-content p {
-      font-size: 1rem;
-      max-width: 500px;
-      text-align: left;
-      transition: transform 0.3s;
-    }
-
-    .about-content p:hover {
-      transform: translateY(-2px);
-    }
-
-    /* Contact Section */
-    #contact {
-      padding: 3rem 2rem;
-      text-align: center;
-      background-color: #fff;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      margin: 2rem auto;
-      max-width: 900px;
-    }
-
-    #contact h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #2980b9;
-    }
-
-    #contact p {
-      margin-bottom: 1rem;
-    }
-
-    .button {
-      background-color: #2980b9;
-      color: white;
-      padding: 0.6rem 1.5rem;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      font-weight: bold;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    p {
+      font-size: 0.9rem;
+      max-width: 800px;
+      margin: 0 auto 1rem;
     }
 
     /* Footer */
@@ -186,21 +140,24 @@
       font-size: 0.85rem;
     }
 
-    /* Responsive Design */
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
+    /* Media Queries */
+    @media (max-width: 768px) {
       .nav-links {
+        display: none; /* Hide links by default */
         flex-direction: column;
-        gap: 0.5rem;
+        width: 100%;
+        background-color: #2980b9;
+        position: absolute;
+        top: 60px; /* Adjust according to the nav height */
+        left: 0;
       }
 
-      .about-content {
-        flex-direction: column;
-        align-items: center;
+      .nav-links.active {
+        display: flex; /* Show links when activated */
+      }
+
+      .hamburger {
+        display: flex; /* Show hamburger icon */
       }
     }
   </style>
@@ -208,11 +165,20 @@
 <body>
   <!-- Navigation Bar -->
   <nav>
-    <div class="logo">Shujaa Self Help Group</div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About Us</a></li>
-      <li><a href="#contact">Contact</a></li>
+    <div class="logo"><img src="images/logo.png" alt="Logo"></div>
+    <div class="hamburger" id="hamburger">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home"><i class="fas fa-home"></i>Home</a></li>
+      <li><a href="#about"><i class="fas fa-info-circle"></i>About Us</a></li>
+      <li><a href="#membership"><i class="fas fa-users"></i>Membership</a></li>
+      <li><a href="#loans"><i class="fas fa-hand-holding-usd"></i>Loans</a></li>
+      <li><a href="#loanapplication"><i class="fas fa-file-alt"></i>Loan Application</a></li>
+      <li><a href="#meetings"><i class="fas fa-calendar-alt"></i>Meetings</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
     </ul>
   </nav>
 
@@ -220,37 +186,59 @@
   <div class="hero" id="home">
     <h1>Welcome to Shujaa Self Help Group</h1>
     <p>Your community partner for empowerment and support!</p>
-    <a href="#about" class="button">Learn More</a>
+    <a href="#about" class="button"><i class="fas fa-arrow-right"></i> Learn More</a>
   </div>
 
   <!-- About Section -->
   <section id="about">
-    <h2>About Us</h2>
-    <div class="about-content">
-      <img src="images/02.jpg" alt="Shujaa Self Help Group">
-      <p>Welcome to the official page of Shujaa Self Help Group! 🌟 We are a community-driven organization dedicated to empowering individuals and families across the country through collective action and financial support. At Shujaa, we believe in the power of unity and collaboration to effect positive change. Our mission is to uplift our members by providing a favorable savings home, a better place to borrow at friendly interest rates, and opportunities through connection with our members. Join us on our journey as we work together to build a stronger, more resilient community where we believe in creating opportunities for ourselves. Follow our page for updates on our initiatives, events, and ways you can get involved. Together, we can make a difference!</p>
-    </div>
+    <h2><i class="fas fa-info-circle"></i> About Us</h2>
+    <p>We are a community-driven organization dedicated to empowering individuals and families through collective action and financial support. Our mission is to provide a secure savings platform and access to loans at friendly interest rates, fostering connection and resilience within our community.</p>
   </section>
 
-   <!-- Loan Application -->
-  <section id="contact">
-    <h2>Loan Application</h2>
-    <p>Please be careful when filling this form</p>
-    <p>Fill the form: <a href="https://docs.google.com/forms/d/e/1FAIpQLScYh-ulwS2tsVvuKG3lV41ETGFK54gW4JSU52n5IO1q_RpT5Q/viewform?usp=sf_link">Proceed</a> </p>
+  <!-- Membership Section -->
+  <section id="membership">
+    <h2><i class="fas fa-users"></i> Membership Eligibility</h2>
+    <p>Any adult with a reliable income can join. Membership ranges from ten to forty members. Weekly contributions of Ksh. 100 are required by Sundays at 10 PM, with a fine of Ksh. 20 for late payments.</p>
+  </section>
+
+  <!-- Loan Section -->
+  <section id="loans">
+    <h2><i class="fas fa-hand-holding-usd"></i> Loan Information</h2>
+    <p>Loans are offered with a 10% compound interest rate. Members can borrow based on their contribution and that of a guarantor. Non-members may borrow up to 1.5% of their guarantor’s savings if the guarantor has no pending loans.</p>
+  </section>
+
+  <!-- Meetings Section -->
+  <section id="meetings">
+    <h2><i class="fas fa-calendar-alt"></i> Meetings</h2>
+    <p>General meetings include Annual, Monthly, and Special meetings. The Annual General Meeting is held on December 12, with all members required to attend or pay a fine of Ksh. 50 for absence without apology.</p>
+  </section>
+
+  <!-- Loan Application -->
+  <section id="loanapplication">
+    <h2><i class="fas fa-file-alt"></i> Loan Application</h2>
+    <p>Fill out our loan application form here: <a href="https://docs.google.com/forms/d/e/1FAIpQLScYh-ulwS2tsVvuKG3lV41ETGFK54gW4JSU52n5IO1q_RpT5Q/viewform?usp=sf_link"><i class="fas fa-edit"></i> Apply Now</a></p>
   </section>
 
   <!-- Contact Section -->
   <section id="contact">
-    <h2>Get in Touch</h2>
-    <p>We'd love to hear from you! Feel free to reach out through the following contacts:</p>
-    <p>Phone: <a href="tel:+254746964803">0746964803</a> | <a href="tel:+254769835261">0769835261</a></p>
-     <p> WhatsApp: <a href="https://wa.me/254740920815" target="_blank">+254 740 920 815</a></p>
-    <p>Email: <a href="mailto:shujaaselfhelpg11@gmail.com">shujaaselfhelpg11@gmail.com</a></p>
+    <h2><i class="fas fa-envelope"></i> Get in Touch</h2>
+    <p><i class="fas fa-phone-alt"></i> Phone: <a href="tel:+254746964803">0746964803</a> | <a href="tel:+254769835261">0769835261</a></p>
+    <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/254740105730">Click here</a></p>
+    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:shujaaselfhelpg11@gmail.com">shujaaselfhelpg11@gmail.com</a></p>
   </section>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2024 Shujaa Self Help Group. All rights reserved.</p>
   </footer>
+
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
 </body>
 </html>
