@@ -140,6 +140,32 @@
       font-size: 0.85rem;
     }
 
+     /* Popup Styling */
+  .popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #2980b9;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, serif;
+    font-size: 0.9rem;
+    z-index: 1001;
+    max-width: 250px;
+  }
+
+  .popup-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+  }
+
     /* Media Queries */
     @media (max-width: 768px) {
       .nav-links {
@@ -163,6 +189,18 @@
   </style>
 </head>
 <body>
+
+  
+
+<!-- Popup Notification -->
+<div id="popup-ad" class="popup">
+  <span id="popup-close" class="popup-close">&times;</span>
+  <h3>Professional IT Services</h3>
+  <p>For top-notch websites, software, and applications, contact  <strong>0705672898</strong></p>
+  <p>Also you can support my music on social media: <strong>Bob 10 Mziki</strong>.</p>
+</div>
+
+
   <!-- Navigation Bar -->
   <nav>
     <div class="logo"><img src="images/logo.png" alt="Logo"></div>
@@ -255,6 +293,21 @@
       navLinks.classList.remove("active"); // Close the menu after clicking
     });
   });
+
+   // Function to show the popup
+   function showPopup() {
+    const popup = document.getElementById('popup-ad');
+    popup.style.display = 'block';
+  }
+
+  // Close the popup when the close button is clicked
+  document.getElementById('popup-close').onclick = function() {
+    const popup = document.getElementById('popup-ad');
+    popup.style.display = 'none';
+  }
+
+  // Re-display the popup every 10 seconds
+  setInterval(showPopup, 10000);
 </script>
 
 </body>
